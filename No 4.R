@@ -6,10 +6,10 @@ dchisq(x, v)
 
 #4b
 hsl <- rchisq(100, df = v)
-
+hsl
 hist(hsl, 
      freq = FALSE, 
-     xlim = c(0,25), 
+     xlim = c(0,50), 
      ylim = c(0,0.2))
 
 #4c
