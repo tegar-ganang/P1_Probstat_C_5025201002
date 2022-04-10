@@ -7,10 +7,12 @@ set.seed(365)
 dpois(x, lambda)
 
 #3b
-dpois(x, lambda = p*n) #kurang histogram
-hist(dpois(x, lambda = p*n), xlab = "probabilitas", ylab = "hari", main = "Poisson Histogram")
+rpois(n, lambda) #kurang histogram
+hist(rpois(n, lambda), xlab = "probabilitas", ylab = "hari", main = "Poisson Histogram")
 #3c
 summary(dpois(x, lambda))
-summary(dpois(x, lambda = p*n))
+summary(rpois(n, lambda))
 #3d
 rataan <- varian <- lambda
+rataan
+varian
