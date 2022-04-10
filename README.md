@@ -1,5 +1,4 @@
-# 
-P1_Probstat_C_5025201002
+# P1_Probstat_C_5025201002
 ## Soal 1
  1.  Seorang  penyurvei  secara  acak  memilih  orang-orang  di  jalan  sampai  dia  bertemu  dengan
  seseorang yang menghadiri acara vaksinasi sebelumnya.
@@ -163,5 +162,233 @@ untuk 2c kita diminta untuk mencari mean dan varian dari kasus tersebut.
 mean eksak menggunakan rumus `n*p` hasilnya yaitu `4`. sedangkan mean dengan 10000 data random didapatkan dengan rumus `mean(rbinom(10000,size = 20,p))` dan hasilnya yaitu `4.0161`.
 
 varian eksak menggunakan rumus `n*p*q` hasilmnya yaitu `3.2`. sedangkan varian dengan 10000 data random didapatkan dengan rumus `var(rbinom(10000, size = 20,p))` dan hasilnya yaitu `3.239224`.
+
+## Soal 3
+ 3.  Diketahui data dari  sebuah tempat bersalin di rumah sakit tertentu menunjukkan rata-rata historis
+ 4,5 bayi lahir di rumah sakit ini setiap hari. (gunakan Distribusi Poisson)
+
+Code no 3 adalah sebagai berikut
+
+ a.  Berapa peluang bahwa 6 bayi akan lahir di rumah sakit ini besok?
+ b.  simulasikan dan buatlah histogram kelahiran 6 bayi akan lahir di rumah sakit ini  selama
+ setahun (n = 365)
+ c.  dan bandingkan hasil poin a dan b , Apa kesimpulan yang bisa didapatkan
+ d.  Nilai Rataan (μ) dan Varian (σ²) dari Distribusi  Poisson. 
+ 
+ ## Soal 4
+  4.  Diketahui nilai x = 2 dan v = 10. Tentukan:
+ a.  Fungsi Probabilitas dari Distribusi Chi-Square.
+ b.  Histogram dari Distribusi Chi-Square dengan 100 data random.
+ c.  Nilai Rataan (μ) dan Varian (σ²) dari Distribusi  Chi-Square. 
+
+Berikut merupakan keseluruhan kode untuk no 4
+
+```
+x <- 2
+v <- 10
+
+#4a  Fungsi Probabilitas dari Distribusi Chi-Square.
+dchisq(x, v)
+
+#4b
+hsl <- rchisq(100, df = v)
+hsl
+hist(hsl, 
+     freq = FALSE, 
+     xlim = c(0,50), 
+     ylim = c(0,0.2))
+
+#4c
+##mean
+mean <- v
+mean
+##variance
+variance <- 2*v
+variance
+```
+
+Berikut merupakan screenshoot untuk nomor 4
+
+![image](https://user-images.githubusercontent.com/85062827/162620239-69e8b942-d115-4c58-9b0a-ee50c9910599.png)
+
+ a.  Fungsi Probabilitas dari Distribusi Chi-Square.
+ menggunakan dungsi `dchisq`
+ 
+ ```
+ #4a  Fungsi Probabilitas dari Distribusi Chi-Square.
+dchisq(x, v)
+ ```
+ outputnya yaitu `[1] 0.007664155`
+ 
+ b.  Histogram dari Distribusi Chi-Square dengan 100 data random.
+ 
+ ```
+ #4b
+hsl <- rchisq(100, df = v)
+hsl
+hist(hsl, 
+     freq = FALSE, 
+     xlim = c(0,50), 
+     ylim = c(0,0.2))
+
+ ```
+ hasil run kode tersebut adalah
+ 
+ ![image](https://user-images.githubusercontent.com/85062827/162620525-86ff1e36-1d49-475b-9d58-4c5197bf40f2.png)
+ 
+ c.  Nilai Rataan (μ) dan Varian (σ²) dari Distribusi  Chi-Square. 
+```
+#4c
+##mean
+mean <- v
+mean
+##variance
+variance <- 2*v
+variance
+
+```
+mean untuk distribusi chi-square sama dengan v atau derajat kebebasan
+varian untuk distriusi chi-square sama dengan 2*v
+
+output mean : `10`
+output varian : `20`
+
+# Soal 5
+ 5.  Diketahui bilangan acak  (random variable)  berdistribusi  exponential (λ = 3). Tentukan
+ a.  Fungsi Probabilitas dari Distribusi Exponensial
+ b.  Histogram dari Distribusi Exponensial untuk 10, 100, 1000 dan 10000 bilangan random 
+ c.  Nilai Rataan (μ) dan Varian (σ²) dari Distribusi  Exponensial untuk n = 100 dan λ = 3 
+  
+ Petunjuk:
+ ●  Gunakan set.seed(1)
+ ●  Gunakan fungsi bawaan R 
+ 
+ Berikut merupakan keseluruhan kode untuk no 5
+ 
+ ```
+ lambda <- 3
+#5a
+DistExponensial <- function(lambda, x){
+  print((1/lambda),exp(x/lambda*-1))
+}
+
+#5b
+set.seed(1)
+N <- 10
+y_rexp <- rexp(N, lambda)
+hist(y_rexp,breaks = 5, 
+     main = "10 data")
+
+N <- 100
+y_rexp <- rexp(N, lambda)
+hist(y_rexp,breaks = 50, main = "100 data")
+
+N <- 1000
+y_rexp <- rexp(N, lambda)
+hist(y_rexp, breaks = 500, main = "1000 data")
+
+N <- 10000
+y_rexp <- rexp(N, lambda)
+hist(y_rexp, breaks = 5000, main = "10000 data")
+
+#5c
+mean(rexp(100, lambda))
+
+var(rexp(100, lambda))
+```
+ 
+ Berikut merupakan screenshoot untuk nomor 5
+ 
+![image](https://user-images.githubusercontent.com/85062827/162620919-f54d8a6c-a62b-4f95-ad34-99a9915f431e.png)
+
+a.  Fungsi Probabilitas dari Distribusi Exponensial
+
+```
+set.seed(1)
+N <- 10
+y_rexp <- rexp(N, lambda)
+hist(y_rexp,breaks = 5, 
+     main = "10 data")
+```
+
+b.  Histogram dari Distribusi Exponensial untuk 10, 100, 1000 dan 10000 bilangan random 
+
+```
+set.seed(1)
+N <- 10
+y_rexp <- rexp(N, lambda)
+hist(y_rexp,breaks = 5, 
+     main = "10 data")
+```
+
+histogram untuk n = 10
+
+![image](https://user-images.githubusercontent.com/85062827/162621326-b041490f-d7f1-4579-b773-b780a6ee17e6.png)
+
+```
+N <- 100
+y_rexp <- rexp(N, lambda)
+hist(y_rexp,breaks = 50, main = "100 data")
+```
+histogram untuk n = 100
+
+![image](https://user-images.githubusercontent.com/85062827/162621424-4219ab2a-4c7d-4238-a97c-f5d5a9f89b7e.png)
+
+```
+N <- 1000
+y_rexp <- rexp(N, lambda)
+hist(y_rexp, breaks = 500, main = "1000 data")
+```
+
+histogram untuk n = 1000
+
+![image](https://user-images.githubusercontent.com/85062827/162621452-4d5bd6ef-322d-4a4c-8d55-fe4e4ef2fba3.png)
+
+```
+N <- 10000
+y_rexp <- rexp(N, lambda)
+hist(y_rexp, breaks = 5000, main = "10000 data")
+
+```
+
+histogram untuk n = 10000
+
+![image](https://user-images.githubusercontent.com/85062827/162621838-0393b5d1-18cf-4c4b-8eb1-5c78565e8e4e.png)
+
+c.  Nilai Rataan (μ) dan Varian (σ²) dari Distribusi  Exponensial untuk n = 100 dan λ = 3 
+
+```
+mean(rexp(100, lambda))
+
+var(rexp(100, lambda))
+```
+Hasil rataan untuk n = 100 dan λ = 3 
+`[1] 0.3675159`
+
+Hasil variansi untuk n = 100 dan λ = 3 
+`[1] 0.09725574`
+ 
+# Soal 6
+ 6.  Diketahui generate random nilai sebanyak 100 data, mean = 50, sd = 8. Tentukan
+ a.  Fungsi Probabilitas dari Distribusi Normal P(X1 ≤ x ≤ X2), hitung Z-Score Nya dan plot
+ data generate randomnya dalam bentuk grafik. Petunjuk(gunakan fungsi plot()).
+ Keterangan :
+ X1 = Dibawah rata-rata
+ X2 = Diatas rata-rata
+ Contoh data : 
+  1,2,4,2,6,3,10,11,5,3,6,8
+ rata-rata = 5.083333
+ X1 = 5
+ X2 = 6 
+ b.  Generate Histogram dari Distribusi Normal dengan breaks 50 dan format penamaan:
+ NRP_Nama_Probstat_{Nama Kelas}_DNhistogram
+ Contoh :
+ 312312312_Rola_Probstat_A_DNhistogram 
+ c.  Nilai Varian (  ) dari hasil generate random nilai  Distribusi Normal. 
+ σ² 
+ 
+ Berikut merupakan keseluruhan kode untuk no 6
+ 
+ Berikut merupakan screenshoot untuk nomor 6
 
 
