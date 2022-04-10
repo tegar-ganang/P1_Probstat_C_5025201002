@@ -175,6 +175,79 @@ Code no 3 adalah sebagai berikut
  c.  dan bandingkan hasil poin a dan b , Apa kesimpulan yang bisa didapatkan
  d.  Nilai Rataan (μ) dan Varian (σ²) dari Distribusi  Poisson. 
  
+Berikut merupakan keseluruhan kode untuk no 3
+
+```
+lambda <- 4.5
+x <- 6
+n <- 365
+p <- 0.5
+set.seed(365)
+#3a
+dpois(x, lambda)
+
+#3b
+rpois(n, lambda) #kurang histogram
+hist(rpois(n, lambda), xlab = "probabilitas", ylab = "hari", main = "Poisson Histogram")
+#3c
+summary(dpois(x, lambda))
+summary(rpois(n, lambda))
+#3d
+rataan <- varian <- lambda
+rataan
+varian
+```
+
+Berikut merupakan screenshoot untuk nomor 3
+
+![image](https://user-images.githubusercontent.com/85062827/162624305-37783069-bbce-401f-b4a7-33e6323510a2.png)
+
+ a.  Berapa peluang bahwa 6 bayi akan lahir di rumah sakit ini besok?
+ 
+ ```
+#3a
+dpois(x, lambda)
+```
+
+Hasil nya yaitu : `[1] 0.1281201`
+
+ b.  simulasikan dan buatlah histogram kelahiran 6 bayi akan lahir di rumah sakit ini  selama
+ setahun (n = 365)
+ 
+```
+#3b
+rpois(n, lambda) #kurang histogram
+hist(rpois(n, lambda), xlab = "probabilitas", ylab = "hari", main = "Poisson Histogram")
+```
+
+ Histogram
+ 
+ ![image](https://user-images.githubusercontent.com/85062827/162624398-2ff04448-4fdf-4ad6-9df5-7218293c5be2.png)
+
+ c.  dan bandingkan hasil poin a dan b , Apa kesimpulan yang bisa didapatkan
+ 
+```
+summary(dpois(x, lambda))
+summary(rpois(n, lambda))
+```
+Hasil
+summary(dpois(x, lambda))
+   `Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.1281  0.1281  0.1281  0.1281  0.1281  0.1281 `
+summary(rpois(n, lambda))
+  ` Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   3.000   4.000   4.479   6.000  12.000 `
+
+ d.  Nilai Rataan (μ) dan Varian (σ²) dari Distribusi  Poisson. 
+
+```
+rataan <- varian <- lambda
+rataan
+varian
+```
+
+`rataan == varian == lambda == 4.5`
+
  ## Soal 4
   4.  Diketahui nilai x = 2 dan v = 10. Tentukan:
  a.  Fungsi Probabilitas dari Distribusi Chi-Square.
@@ -384,11 +457,89 @@ Hasil variansi untuk n = 100 dan λ = 3
  NRP_Nama_Probstat_{Nama Kelas}_DNhistogram
  Contoh :
  312312312_Rola_Probstat_A_DNhistogram 
- c.  Nilai Varian (  ) dari hasil generate random nilai  Distribusi Normal. 
- σ² 
+ c.  Nilai Varian (σ²) dari hasil generate random nilai  Distribusi Normal.  
  
  Berikut merupakan keseluruhan kode untuk no 6
  
+ ```
+n <- 100
+m <- 50
+sd <- 8
+
+#6a
+set.seed(100)
+rand <- rnorm(100)
+rata2 <- mean(rand)
+
+x1 <- floor(rata2)
+x2 <- ceiling(rata2)
+x1
+x2
+
+z1 <- (x1 - m) / sd
+z2 <- (x2 - m) / sd
+z1
+z2
+
+rnorm(n, m, sd)
+plot(rnorm(n, m, sd))
+
+#b
+hist(rnorm(n, m, sd), xlab = "x", ylab = "y", breaks = 50, main = "5025201002_Tegar Ganang Satrio Priambodo_Probstat_C_DNhistogram")
+
+#c
+varian <- sd**2
+varian
+ ```
+ 
  Berikut merupakan screenshoot untuk nomor 6
+ 
+ ![image](https://user-images.githubusercontent.com/85062827/162623014-16ea99e9-c876-4519-9dd7-0d0a365f3253.png)
+ 
+ a.  Fungsi Probabilitas dari Distribusi Normal P(X1 ≤ x ≤ X2), hitung Z-Score Nya dan plot data generate randomnya dalam bentuk grafik. Petunjuk(gunakan fungsi plot()).
+ 
+ ```
+ #6a
+set.seed(100)
+rand <- rnorm(100)
+rata2 <- mean(rand)
 
+x1 <- floor(rata2)
+x2 <- ceiling(rata2)
+x1
+x2
 
+z1 <- (x1 - m) / sd
+z2 <- (x2 - m) / sd
+z1
+z2
+
+rnorm(n, m, sd)
+plot(rnorm(n, m, sd))
+```
+nilai x1: `0`
+nilai x2: `1`
+nilai z1: `-6.25`
+nilai z2: `-6.125`
+
+![image](https://user-images.githubusercontent.com/85062827/162623265-0bb37b95-98cd-4298-b8f8-c7916d77ad00.png)
+
+b.  Generate Histogram dari Distribusi Normal dengan breaks 50 dan format penamaan:
+ NRP_Nama_Probstat_{Nama Kelas}_DNhistogram
+
+```
+#b
+hist(rnorm(n, m, sd), xlab = "x", ylab = "y", breaks = 50, main = "5025201002_Tegar Ganang Satrio Priambodo_Probstat_C_DNhistogram")
+```
+
+![image](https://user-images.githubusercontent.com/85062827/162623430-5784630b-78c0-4ce3-9186-6cbbc8e91b8e.png)
+
+c.  Nilai Varian (σ²) dari hasil generate random nilai  Distribusi Normal.  
+
+```
+#c
+varian <- sd**2
+varian
+```
+
+varian : 8**2 = 64
