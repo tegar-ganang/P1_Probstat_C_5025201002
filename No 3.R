@@ -8,12 +8,9 @@ dpois(x, lambda)
 
 #3b
 dpois(x, lambda = p*n) #kurang histogram
-
+hist(dpois(x, lambda = p*n), xlab = "probabilitas", ylab = "hari", main = "Poisson Histogram")
 #3c
-
+summary(dpois(x, lambda))
+summary(dpois(x, lambda = p*n))
 #3d
-mean(dpois(x, lambda))
-mean(dpois(x, lambda = p*n))
-
-var(dpois(x, lambda))
-var(dpois(x, lambda = p*n))
+rataan <- varian <- lambda
