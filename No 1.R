@@ -7,8 +7,8 @@ dgeom(x, p)
 mean(rgeom(10000, p)== 3)
 
 # 1c
-# hasil poin a dan b memiliki perbedaan karena distribusi geometric acak dengan 10000 data random
-# perbedaannya antara 0.1 - 0.11
+summary(dgeom(x, p))
+summary(mean(rgeom(10000, p) == 3))
 
 # 1d
 library(dplyr)
